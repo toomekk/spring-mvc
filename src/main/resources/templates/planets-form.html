@@ -5,6 +5,22 @@
     <title>Kreator planet</title>
 </head>
 <body>
-<br> Dodaj planetę do swojego układu słonecznego
+<h1>Dodaj planetę do swojego układu słonecznego</h1>
+<form action="/add-planet" method="post">
+    <label>Nazwa planety:</label>
+    <input type="text" name="name">
+    <br>
+    <label>Rodzaj planety</label>
+    <label>Skalista</label>
+    <input type="radio" name="planet_type" value="rock">
+    <label>Gazowa</label>
+    <input type="radio" name="planet_type" value="gas">
+    <br>
+    <label>Wielkość:</label>
+    <input type="number" name="size">
+    <br>
+    <button type="submit">Dodaj planetę</button>
+
+</form>
 </body>
 </html>
