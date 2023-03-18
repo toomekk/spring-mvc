@@ -1,5 +1,7 @@
 package com.mvc.controller;
 
+import com.mvc.request.PlanetCreationRequest;
+import com.mvc.service.PlanetService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +11,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class PlanetController {
+
+    private PlanetService planetService;
+
+    public PlanetController(PlanetService planetService) {
+        this.planetService = planetService;
+    }
+
     @RequestMapping(path = "add-planet", method = RequestMethod.GET)
     public ModelAndView getPlanetForm(){
 
@@ -22,6 +31,7 @@ public class PlanetController {
         System.out.println(name);
         System.out.println(planetType);
         System.out.println(size);
+        planetService.createPlanet(new PlanetCreationRequest(name, planetType, size));
         return "imperator-page";
 
     }

@@ -13,4 +13,5 @@ public class MainController {
         ModelAndView modelAndView = new ModelAndView("imperator-page.html");
         return modelAndView;
     }
+
 }
