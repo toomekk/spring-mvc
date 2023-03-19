@@ -1,5 +1,6 @@
 package com.mvc.controller;
 
+import com.mvc.exception.AuthenticationServiceException;
 import com.mvc.request.RegisterRequest;
 import com.mvc.service.AuthenticationService;
 import org.springframework.stereotype.Controller;
@@ -26,11 +27,15 @@ public class AuthenticationController {
     }
 
     @PostMapping("/create-imperator")
-    public ModelAndView createImperator(@ModelAttribute ("request")RegisterRequest request){
+    public ModelAndView createImperator(@ModelAttribute ("request")RegisterRequest request) {
         System.out.println(request);
         ModelAndView modelAndView = new ModelAndView("imperator-page");
-        service.createImperator(request);
-        modelAndView.addObject("message","Konto utworzone");
+        try {
+            service.createImperator(request);
+        } catch (AuthenticationServiceException e){
+
+        }
+        modelAndView.addObject("message", "Konto utworzone");
         return modelAndView;
     }
 
